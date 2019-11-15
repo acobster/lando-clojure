@@ -22,7 +22,4 @@ EXPOSE 3000
 RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.9.0"]])' > project.clj \
 && lein deps && rm project.clj
 
-COPY ./entrypoint.sh .
-RUN chmod +x ./entrypoint.sh
-
-ENTRYPOINT ["/bin/sh", "-c", "./entrypoint.sh"]
+CMD ["lein"]

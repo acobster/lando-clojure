@@ -1,5 +1,4 @@
 name: lando-clojure-test
-recipe: custom
 config:
   webroot: .
 
@@ -8,11 +7,22 @@ services:
     type: compose
 
     services:
-      image: clojure:openjdk-8-lein
+      image: acobster/lando-clojure:stable
+      command: lein
 
-      command: lein ring server-headless
+    overrides:
+      environment:
+        LEIN_NREPL_HOST: 0.0.0.0
+
+    run_as_root:
+      - lein deps
+      - lein
 
 tooling:
   lein:
     service: appserver
     cmd: lein
+
+  repl:
+    service: appserver
+    cmd: lein repl :start
