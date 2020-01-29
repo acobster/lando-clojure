@@ -8,6 +8,9 @@ RUN curl --output /usr/local/bin/lein https://raw.githubusercontent.com/technoma
 ENV LEIN_REPL_PORT=9001
 ENV LEIN_REPL_HOST=0.0.0.0
 EXPOSE 9001
+EXPOSE 3000
+
+WORKDIR /var/www
 
 # Install clojure 1.9.0 so users don't have to download it every time
 #RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.9.0"]])' > project.clj \

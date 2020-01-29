@@ -1,19 +1,25 @@
 # lando-clojure
 
-FIXME
+Docker build and example app for running Clojure inside of Lando
 
 ## Prerequisites
 
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
+Just Lando.
 
 ## Running
 
 To start a web server for the application, run:
 
-    lein ring server
+```sh
+docker run -it -p 3000:3000 -v $(pwd):/var/www acobster/lando-clojure:test lein ring server-headless
+```
+
+To start a REPL server:
+
+```sh
+docker run -it -p 9001:9001 acobster/lando-clojure:test lein repl
+```
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2020 Coby Tamayo
