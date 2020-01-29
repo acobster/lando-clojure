@@ -1,0 +1,14 @@
+FROM bitnami/minideb:buster
+
+# Install Java
+RUN apt-get update && \
+  apt-get install --yes default-jdk default-jre curl rlwrap
+
+# Install the Clojure CLI
+# TODO take version as a build ARG?
+# TODO also figure out why `clj` doesn't work
+# https://github.com/perl6/docker/issues/3
+RUN curl --output /tmp/install-clojure.sh https://download.clojure.org/install/linux-install-1.9.0.397.sh && \
+  chmod +x /tmp/install-clojure.sh && \
+  /tmp/install-clojure.sh
+
