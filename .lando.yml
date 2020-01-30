@@ -1,18 +1,22 @@
-name: lando-clojure-test
-recipe: custom
-config:
-  webroot: .
+name: clojure-test
 
 services:
   appserver:
     type: compose
 
     services:
-      image: clojure:openjdk-8-lein
-
+      image: acobster/lando-clojure:lein
       command: lein ring server-headless
+
+      ports:
+        - '9001'
+        - '3000'
 
 tooling:
   lein:
     service: appserver
     cmd: lein
+
+proxy:
+  appserver:
+    - clojure-test.lndo.site
