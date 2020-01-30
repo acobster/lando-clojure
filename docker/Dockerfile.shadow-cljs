@@ -1,0 +1,9 @@
+FROM acobster/lando-clojure:cli-tools
+
+# Install NodeJS/npm
+RUN echo TODO install node
+
+# Install shadow-cljs
+RUN npm install -g shadow-cljs
+
+CMD ["shadow-cljs", "cljs-repl"]
