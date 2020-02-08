@@ -9,13 +9,21 @@ services:
       command: lein ring server-headless
 
       ports:
-        - '9001'
-        - '3000'
+        - '9001:9001'
+        - '3000:3000'
 
 tooling:
   lein:
     service: appserver
     cmd: lein
+
+  repl:
+    service: appserver
+    cmd: lein repl
+
+  test:
+    service: appserver
+    cmd: lein test
 
 proxy:
   appserver:
