@@ -8,10 +8,6 @@ services:
       image: acobster/lando-clojure:lein
       command: lein ring server-headless
 
-      ports:
-        - '9001:9001'
-        - '3000:3000'
-
 tooling:
   lein:
     service: appserver
@@ -27,4 +23,4 @@ tooling:
 
 proxy:
   appserver:
-    - clojure-test.lndo.site
+    - clojuretest.lndo.site:3000
