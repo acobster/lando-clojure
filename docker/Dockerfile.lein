@@ -18,4 +18,9 @@ RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.9.0"]])' >
   && lein deps \
   && rm project.clj
 
+# Run all commands going forward as the user/UID that Lando maps host user to
+# by default
+RUN chown -R www-data:www-data /app
+USER www-data:1000
+
 CMD ["lein", "repl"]
