@@ -1,0 +1,42 @@
+#
+# Leiningen+shadow-cljs app example
+#
+# Generated with:
+#
+#   /path/to/examples $ lein new re-frame re-frame-example +test
+#
+name: re-frame-example
+
+services:
+  appserver:
+    type: compose
+
+    services:
+      image: acobster/lando-clojure:shadow-cljs
+      command: lein dev
+
+      ports:
+        - '9630:9630'
+        - '8777:8777'
+        - '8280:8280'
+        - '8290:8290'
+
+tooling:
+  lein:
+    service: appserver
+    description: run `lein` commands
+    cmd: lein
+
+  shadow:
+    service: appserver
+    description: run `shadow-cljs` commands
+    cmd: shadow-cljs
+
+  repl:
+    service: appserver
+    description: start a ClojureScript REPL
+    cmd: shadow-cljs cljs-repl app
+
+proxy:
+  appserver:
+    - compojure-app-example.lndo.site:9630
