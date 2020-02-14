@@ -37,6 +37,14 @@ tooling:
     description: start a ClojureScript REPL
     cmd: shadow-cljs cljs-repl app
 
+  test:
+    service: appserver
+    description: start the test server
+    cmd: shadow-cljs watch test
+
 proxy:
   appserver:
-    - compojure-app-example.lndo.site:9630
+    - re-frame-example.lndo.site:8280
+    - compilation.re-frame-example.lndo.site:9630
+    # to start shadow-cljs/Karma test server, run `lando test`:
+    - test.re-frame-example.lndo.site:8290
