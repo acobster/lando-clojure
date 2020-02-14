@@ -20,7 +20,8 @@ RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.9.0"]])' >
 
 # Map default Lando user to the correct gid and set up permissions on
 # well-known paths
-RUN groupmod -g 1000 www-data && \
+RUN usermod -u 1000 www-data && \
+  groupmod -g 1000 www-data && \
   mkdir /var/www && \
   chown -R www-data:www-data /var/www && \
   chown -R www-data:www-data /app
