@@ -48,9 +48,7 @@ RUN buildDeps='xz-utils' \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 # Need to be able to install NPM packages and link them in /usr/local/bin
-RUN mkdir /var/www && \
-  chown -R www-data:www-data /var/www && \
-  chown -R www-data:www-data /usr/local/lib/node_modules && \
+RUN chown -R www-data:www-data /usr/local/lib/node_modules && \
   chown -R www-data:www-data /usr/local/bin
 
 USER www-data:1000
