@@ -1,0 +1,30 @@
+#
+# Basic Leiningen app example
+#
+# Generated with:
+#
+#   /path/to/examples $ lein new compojure-app compojure-app-example
+#
+name: compojure-app-example
+
+services:
+  appserver:
+    type: compose
+
+    services:
+      image: acobster/lando-clojure:lein
+      command: lein ring server-headless
+
+      ports:
+        - '3000:3000'
+        - '9001:9001'
+
+tooling:
+  lein:
+    service: appserver
+    description: run `lein` commands
+    cmd: lein
+
+proxy:
+  appserver:
+    - compojure-app-example.lndo.site:3000
