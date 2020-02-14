@@ -1,11 +1,10 @@
 FROM acobster/lando-clojure:lein
 
+# Run subsequent commands as root
+USER root:0
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y gnupg2
-
-# Configure user & permissions for node
-RUN groupadd --gid 1000 node \
-  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
 ENV NODE_VERSION 12.15.0
 
@@ -48,9 +47,37 @@ RUN buildDeps='xz-utils' \
     && apt-get purge -y --auto-remove $buildDeps \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-# Install shadow-cljs
-RUN npm install -g shadow-cljs
+# Need to be able to install NPM packages and link them in /usr/local/bin
+RUN mkdir /var/www && \
+  chown -R www-data:www-data /var/www && \
+  chown -R www-data:www-data /usr/local/lib/node_modules && \
+  chown -R www-data:www-data /usr/local/bin
 
-WORKDIR /app
+USER www-data:1000
+
+# Install shadow-cljs and yarn
+RUN npm install -g shadow-cljs yarn
+
+#
+# Expose common ports
+# You'll likely want to forward these explicitly in your Landofile, like:
+#
+# ```
+# services:
+#   appserver:
+#     type: compose
+#     services:
+#       image: acobster/lando-clojure:lein
+#       command: lein ring server-headless # <-- this is just an example, could be anything
+#       ports:
+#         - '9630:9630'
+#         - '8777:8777'
+#         # etc.
+# ```
+#
+EXPOSE 9630
+EXPOSE 8777
+EXPOSE 8280
+EXPOSE 8290
 
 CMD ["shadow-cljs", "cljs-repl"]

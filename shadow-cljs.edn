@@ -1,0 +1,9 @@
+;; shadow-cljs configuration
+{:source-paths ["src/cljs"]
+
+ :dependencies []
+
+ :dev-http {8080 {:root "public/"}}
+
+ :builds {:dev {:output-dir "public/js"
+                :target :browser}}}
