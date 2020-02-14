@@ -25,6 +25,11 @@ tooling:
     description: run `lein` commands
     cmd: lein
 
+  repl:
+    service: appserver
+    description: start a Clojure REPL
+    cmd: lein repl
+
 proxy:
   appserver:
     - compojure-app-example.lndo.site:3000
