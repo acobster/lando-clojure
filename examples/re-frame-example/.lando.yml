@@ -40,7 +40,7 @@ tooling:
   test:
     service: appserver
     description: start the test server
-    cmd: shadow-cljs watch test
+    cmd: shadow-cljs watch browser-test
 
 proxy:
   appserver:
