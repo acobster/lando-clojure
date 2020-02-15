@@ -10,8 +10,8 @@ Just Docker and Lando.
 
 This project has two main goals:
 
-1. Portability: remove barrier to entry for folks already invested in Lando, but who may not have the JDK, Leiningen, etc. on ther machines.
-2. Environment parity: Lando is based on [services](https://docs.lando.dev/config/services.html) running in disparate containers which can all talk to each other, just like they would in production. If your Clojure app relies on a database, that's one less service you have to set up per machine.
+1. **Portability:** remove barrier to entry for folks already invested in Lando, but who may not have the JDK, Leiningen, etc. on ther machines.
+2. **Environment parity:** Lando is based on [services](https://docs.lando.dev/config/services.html) running in disparate containers which can all talk to each other, just like they would in production. If your Clojure app relies on a database, that's one less service you have to set up per machine.
 
 ## Examples
 
