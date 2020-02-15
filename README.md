@@ -44,6 +44,33 @@ To start a shadow-cljs REPL:
 docker run -it -p 3000:3000 -v $(pwd):/app acobster/lando-clojure:shadow-cljs shadow-cljs cljs-repl dev
 ```
 
+## Examples
+
+A Landofile for a simple Clojure web app looks something like this:
+
+```yaml
+name: clojure-test
+
+services:
+  appserver:
+    type: compose
+
+    services:
+      image: acobster/lando-clojure:lein
+      command: lein ring server-headless
+
+tooling:
+  lein:
+    service: appserver
+    cmd: lein
+
+proxy:
+  appserver:
+    - clojuretest.lndo.site:3000
+```
+
+See the [examples folder](https://github.com/acobster/lando-clojure/tree/master/examples) for full working examples. Please note these are works-in-progress.
+
 ## License
 
 Copyright © 2020 Coby Tamayo
