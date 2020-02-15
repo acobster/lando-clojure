@@ -1,10 +1,10 @@
 # lando-clojure
 
-Docker build and example app for running Clojure inside of Lando
+Docker builds and example apps for running [Clojure](https://clojure.org/) inside of [Lando](https://lando.dev).
 
 ## Prerequisites
 
-Just Docker and [Lando](https://lando.dev).
+Just Docker and Lando.
 
 ## Why?
 
@@ -50,7 +50,7 @@ This will start a headless Ring server when you run `lando start`, and serve it 
 
 See the [examples folder](https://github.com/acobster/lando-clojure/tree/master/examples) for full working examples. Please note these are works-in-progress.
 
-### Using vanilla Docker
+## Running vanilla Docker
 
 It might be useful to know what the Docker containers are doing in order to design your use-case 
 
@@ -72,6 +72,14 @@ To start a shadow-cljs REPL:
 
 ```sh
 docker run -it -p 3000:3000 -v $(pwd):/app acobster/lando-clojure:shadow-cljs shadow-cljs cljs-repl dev
+```
+
+## Building the images
+
+To build supported images, run:
+
+```sh
+bin/docker-build.sh
 ```
 
 ## License
