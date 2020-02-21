@@ -45,6 +45,6 @@ tooling:
 proxy:
   appserver:
     - re-frame-example.lndo.site:8280
-    - compilation.re-frame-example.lndo.site:9630
+    - compile.re-frame-example.lndo.site:9630
     # to start shadow-cljs/Karma test server, run `lando test`:
     - test.re-frame-example.lndo.site:8290
