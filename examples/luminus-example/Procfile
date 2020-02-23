@@ -1,0 +1,1 @@
+web: java -cp target/uberjar/luminus-example.jar clojure.main -m luminus-example.core
