@@ -6,6 +6,7 @@
   :dependencies [[ch.qos.logback/logback-classic "1.2.3"]
                  [cheshire "5.9.0"]
                  [clojure.java-time "0.3.2"]
+                 [com.datomic/client-pro "0.9.41"]
                  [cprop "0.1.15"]
                  [expound "0.8.3"]
                  [funcool/struct "1.4.0"]

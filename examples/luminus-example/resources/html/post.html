@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content">
+
+    <h1>{{ post.title }}</h1>
+    
+    {% for section in post.content %}
+        <p>{{ section }}</p>
+    {% endfor %}
+  </div>
+
+  <pre>{{ debug }}</pre>
+{% endblock %}

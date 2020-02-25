@@ -1,12 +1,13 @@
 (ns luminus-example.core
   (:require
-    [luminus-example.handler :as handler]
-    [luminus-example.nrepl :as nrepl]
-    [luminus.http-server :as http]
-    [luminus-example.config :refer [env]]
-    [clojure.tools.cli :refer [parse-opts]]
-    [clojure.tools.logging :as log]
-    [mount.core :as mount])
+   [luminus-example.handler :as handler]
+   [luminus-example.nrepl :as nrepl]
+   [luminus-example.db]
+   [luminus.http-server :as http]
+   [luminus-example.config :refer [env]]
+   [clojure.tools.cli :refer [parse-opts]]
+   [clojure.tools.logging :as log]
+   [mount.core :as mount])
   (:gen-class))
 
 ;; log uncaught exceptions in threads
